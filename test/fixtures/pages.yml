@@ -1,0 +1,24 @@
+homepage:
+  id: 1
+  title: Homepage
+  breadcrumb: Homepage
+  slug: /
+  status_id: 100
+  published_at: 2008-01-01 08:00:00
+rails_page:
+  id: 2
+  title: App page
+  breadcrumb: App page
+  slug: app
+  class_name: RailsPage
+  status_id: 100
+  parent_id: 1
+  published_at: 2008-01-01 08:00:00
+other:
+  id: 3
+  title: Other
+  breadcrumb: Other
+  slug: other
+  status_id: 100
+  parent_id: 1
+  published_at: 2008-01-01 08:00:00
