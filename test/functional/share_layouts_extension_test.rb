@@ -13,6 +13,6 @@ class ShareLayoutsExtensionTest < Test::Unit::TestCase
   end
   
   def test_should_add_helper
-    assert ApplicationController.master_helper_module.included_modules.include?(ShareLayouts::Helper)
+    assert ActionView::Base.included_modules.include?(ShareLayouts::Helper)
   end
 end

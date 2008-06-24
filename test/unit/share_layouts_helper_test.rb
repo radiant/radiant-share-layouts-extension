@@ -32,7 +32,7 @@ TEXT
   
   def test_should_assign_layout_of_page
     assign_attributes!(@page)
-    assert_equal @page._layout, layouts(:main)
+    assert_equal @page.layout, layouts(:main)
   end
   
   def test_should_assign_page_title_from_instance_var

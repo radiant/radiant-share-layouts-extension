@@ -21,9 +21,8 @@ class RailsPage < Page
   end
    
   def build_parts_from_hash!(content)
-    parts.clear
     content.each do |k,v|
-      parts.build(:name => k.to_s, :content => v)
+      (part(k) || parts.build(:name => k.to_s)).content = v
     end
   end 
   

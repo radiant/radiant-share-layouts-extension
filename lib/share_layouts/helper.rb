@@ -1,12 +1,10 @@
 module ShareLayouts::Helper
   
   def radiant_layout(name = @radiant_layout)
-    returning String.new do |output|
-      page = find_page
-      assign_attributes!(page, name)
-      page.build_parts_from_hash!(extract_captures) 
-      output << page.render
-    end
+    page = find_page
+    assign_attributes!(page, name)
+    page.build_parts_from_hash!(extract_captures) 
+    page.render
   end
   
   def assign_attributes!(page, name = @radiant_layout)

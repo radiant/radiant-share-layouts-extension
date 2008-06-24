@@ -46,4 +46,16 @@ class RailsPageTest < Test::Unit::TestCase
   def test_should_defer_to_default_url_when_not_initialized
     assert_equal '/app/', pages(:rails_page).url
   end
+  
+  def test_should_modify_existing_parts_but_not_save_them
+    @page = pages(:rails_page)
+    @page.parts.create(:name => "sidebar", :content => "This is the sidebar.")
+    
+    @page.build_parts_from_hash!(:body => "This is the body")
+    assert_equal 'This is the sidebar.', @page.part(:sidebar).content
+    
+    @page.build_parts_from_hash!(:sidebar => "OVERRIDE")
+    assert_equal 'OVERRIDE', @page.part(:sidebar).content
+    assert_equal 'This is the sidebar.', @page.part(:sidebar).reload.content
+  end
 end
