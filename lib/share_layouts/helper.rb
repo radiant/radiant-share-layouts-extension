@@ -8,7 +8,7 @@ module ShareLayouts::Helper
   end
   
   def assign_attributes!(page, name = @radiant_layout)
-    page.layout = Layout.find_by_name(name)
+    page.layout = Layout.find_by_name(name) || page.layout
     page.title = @title || @content_for_title || page.title || ''
     page.breadcrumbs = @breadcrumbs || @content_for_breadcrumbs || page.breadcrumbs || ''
     page.request_uri = request.request_uri

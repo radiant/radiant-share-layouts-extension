@@ -35,6 +35,13 @@ TEXT
     assert_equal @page.layout, layouts(:main)
   end
   
+  def test_should_assign_layout_of_page_when_missing
+    previous_layout = @page.layout
+    @radiant_layout = ''
+    assign_attributes!(@page)
+    assert_equal previous_layout, @page.layout
+  end
+  
   def test_should_assign_page_title_from_instance_var
     @title = "My title"
     assign_attributes!(@page)
