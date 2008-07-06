@@ -12,6 +12,7 @@ module ShareLayouts::Helper
     page.title = @title || @content_for_title || page.title || ''
     page.breadcrumbs = @breadcrumbs || @content_for_breadcrumbs || page.breadcrumbs || ''
     page.request_uri = request.request_uri
+    page.published_at ||= Time.now 
     page.request = request
     page.response = response
   end

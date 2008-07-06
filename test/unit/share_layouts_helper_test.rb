@@ -95,6 +95,11 @@ TEXT
     assert_equal 'page', @page.slug
   end
   
+  def test_should_assign_published_at
+    assign_attributes!(@page)
+    assert_not_nil @page.published_at
+  end
+  
   def test_should_render_page
     @title = "My Title"
     assert_equal MAIN_RESULT.strip, radiant_layout.strip
