@@ -31,7 +31,7 @@ module ShareLayouts::Helper
   end
   
   def find_page
-    page = Page.find_by_url(request.request_uri) rescue nil
+    page = Page.find_by_url(request.request_uri.split("?").first) rescue nil
     page.is_a?(RailsPage) ? page : RailsPage.new(:class_name => "RailsPage")
   end
 end

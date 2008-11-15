@@ -113,4 +113,16 @@ TEXT
     assert_not_equal pages(:rails_page), find_page
     assert_kind_of RailsPage, find_page
   end
+
+  def test_should_find_page_ignoring_any_get_params
+    @request.request_uri = "/app?param1=value1;moreparams=radiant"
+    assert_equal pages(:rails_page), find_page
+    assert_kind_of RailsPage, find_page
+    @request.request_uri = "/app/something?param1=value1;moreparams=radiant"
+    assert_equal pages(:rails_page), find_page
+    assert_kind_of RailsPage, find_page
+    @request.request_uri = "/some-other/url/?param1=value1;moreparams=radiant"
+    assert_not_equal pages(:rails_page), find_page
+    assert_kind_of RailsPage, find_page
+  end
 end
