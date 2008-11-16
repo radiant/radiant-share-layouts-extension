@@ -3,8 +3,13 @@ class RailsPage < Page
   attr_accessor :breadcrumbs
 
   def find_by_url(url, live=true, clean=true)
-    url = clean_url(url) if clean
-    self if url.starts_with?(self.url)
+    found_page = super
+    if found_page.nil? || found_page.is_a?(FileNotFoundPage)
+      url = clean_url(url) if clean
+      self if url.starts_with?(self.url)
+    else
+      found_page
+    end
   end
   
   def url=(path)

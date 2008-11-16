@@ -14,8 +14,16 @@ rails_page:
   status_id: 100
   parent_id: 1
   published_at: 2008-01-01 08:00:00
-other:
+rails_page_child:
   id: 3
+  title: Child
+  breadcrumb: Child
+  slug: child-page
+  status_id: 100
+  parent_id: 2
+  published_at: 2008-01-01 08:00:00
+other:
+  id: 4
   title: Other
   breadcrumb: Other
   slug: other

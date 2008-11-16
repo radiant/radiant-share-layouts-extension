@@ -30,11 +30,18 @@ class RailsPageTest < Test::Unit::TestCase
     assert @page.parts.all?(&:new_record?)
   end
   
-  def test_should_find_rails_page_for_all_sub_urls
+  def test_should_find_rails_page_for_sub_urls_that_do_not_match_an_existing_page
     assert_equal pages(:rails_page), Page.find_by_url('/app/')
-    assert_equal pages(:other), Page.find_by_url('/other/')
     assert_equal pages(:rails_page), Page.find_by_url('/app/some-other-url/')
     assert_equal pages(:rails_page), Page.find_by_url('/app/some-other-url/sub-url/')
+  end
+  
+  def test_should_find_page_if_sub_url_matches_one
+    assert_equal pages(:rails_page_child), Page.find_by_url('/app/child-page/')
+  end
+  
+  def test_should_find_page_for_non_sub_urls
+    assert_equal pages(:other), Page.find_by_url('/other/')
   end
   
   def test_should_defer_to_default_url_when_not_initialized
