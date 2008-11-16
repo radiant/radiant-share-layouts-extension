@@ -11,7 +11,8 @@ module ShareLayouts::Helper
     page.layout = Layout.find_by_name(name) || page.layout
     page.title = @title || @content_for_title || page.title || ''
     page.breadcrumbs = @breadcrumbs || @content_for_breadcrumbs || page.breadcrumbs || ''
-    page.request_uri = request.request_uri
+    page.url = request.path
+    page.slug = page.url.split("/").last
     page.published_at ||= Time.now 
     page.request = request
     page.response = response
@@ -31,7 +32,7 @@ module ShareLayouts::Helper
   end
   
   def find_page
-    page = Page.find_by_url(request.request_uri.split("?").first) rescue nil
+    page = Page.find_by_url(request.path) rescue nil
     page.is_a?(RailsPage) ? page : RailsPage.new(:class_name => "RailsPage")
   end
 end

@@ -5,13 +5,7 @@ class RailsPageTest < Test::Unit::TestCase
   test_helper :render, :page
   fixtures :pages
   def setup
-    @page = RailsPage.new(page_params(:class_name => "RailsPage", :request_uri => "http://example.com/some/page"))
-  end
-  
-  def test_should_assign_url_and_slug_from_request_uri
-    @page.request_uri = "http://example.com/some/random/page"
-    assert_equal "/some/random/page", @page.url
-    assert_equal "page", @page.slug
+    @page = RailsPage.new(page_params(:class_name => "RailsPage"))
   end
   
   def test_should_redefine_breadcrumbs_tag

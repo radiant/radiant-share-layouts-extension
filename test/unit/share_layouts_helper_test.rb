@@ -21,7 +21,7 @@ TEXT
     @page = RailsPage.new(page_params(:class_name => "RailsPage"))
     @content_for_layout = "something"
     @radiant_layout = layouts(:main).name
-    @request = OpenStruct.new(:request_uri => "http://example.com/some/page")
+    @request = OpenStruct.new(:path => "/some/page/")
   end
   
   def test_should_extract_content_captures_as_hash
@@ -91,7 +91,7 @@ TEXT
 
   def test_should_assign_request_uri
     assign_attributes!(@page)
-    assert_equal '/some/page', @page.url
+    assert_equal '/some/page/', @page.url
     assert_equal 'page', @page.slug
   end
   
@@ -106,22 +106,10 @@ TEXT
   end
   
   def test_should_find_page
-    @request.request_uri = "/app/something/"
+    @request.path = "/app/something/"
     assert_equal pages(:rails_page), find_page
     assert_kind_of RailsPage, find_page
-    @request.request_uri = "/some-other/url/"
-    assert_not_equal pages(:rails_page), find_page
-    assert_kind_of RailsPage, find_page
-  end
-
-  def test_should_find_page_ignoring_any_get_params
-    @request.request_uri = "/app?param1=value1;moreparams=radiant"
-    assert_equal pages(:rails_page), find_page
-    assert_kind_of RailsPage, find_page
-    @request.request_uri = "/app/something?param1=value1;moreparams=radiant"
-    assert_equal pages(:rails_page), find_page
-    assert_kind_of RailsPage, find_page
-    @request.request_uri = "/some-other/url/?param1=value1;moreparams=radiant"
+    @request.path = "/some-other/url/"
     assert_not_equal pages(:rails_page), find_page
     assert_kind_of RailsPage, find_page
   end

@@ -7,9 +7,8 @@ class RailsPage < Page
     self if url.starts_with?(self.url)
   end
   
-  def request_uri=(value)
-    @url = URI.parse(value).path
-    self.slug = @url.split("/").last
+  def url=(path)
+    @url = path
   end
   
   def url
