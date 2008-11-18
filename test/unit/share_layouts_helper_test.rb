@@ -89,9 +89,13 @@ TEXT
     assert_equal '', @page.breadcrumbs
   end
 
-  def test_should_assign_request_uri
+  def test_should_assign_url_from_request_path
     assign_attributes!(@page)
     assert_equal '/some/page/', @page.url
+  end
+  
+  def test_should_assign_slug_from_request_path
+    assign_attributes!(@page)
     assert_equal 'page', @page.slug
   end
   
