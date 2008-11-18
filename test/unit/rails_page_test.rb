@@ -13,7 +13,6 @@ class RailsPageTest < Test::Unit::TestCase
     assert_respond_to @page, "tag:breadcrumbs"
 
     @page.breadcrumbs = "some breadcrumbs"
-    @page.save!
     assert_renders "some breadcrumbs", "<r:breadcrumbs />"
   end
   
