@@ -20,10 +20,6 @@ class RailsPage < Page
     @url || super
   end
   
-  def breadcrumb
-    title
-  end
-   
   def build_parts_from_hash!(content)
     content.each do |k,v|
       (part(k) || parts.build(:name => k.to_s)).content = v

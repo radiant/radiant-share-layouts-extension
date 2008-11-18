@@ -10,7 +10,8 @@ module ShareLayouts::Helper
   def assign_attributes!(page, name = @radiant_layout)
     page.layout = Layout.find_by_name(name) || page.layout
     page.title = @title || @content_for_title || page.title || ''
-    page.breadcrumbs = @breadcrumbs || @content_for_breadcrumbs || page.breadcrumbs || ''
+    page.breadcrumb = @breadcrumb || @content_for_breadcrumb || page.breadcrumb || page.title
+    page.breadcrumbs = @breadcrumbs || @content_for_breadcrumbs || nil
     page.url = request.path
     page.slug = page.url.split("/").last
     page.published_at ||= Time.now 

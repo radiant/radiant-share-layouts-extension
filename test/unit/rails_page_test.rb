@@ -16,9 +16,10 @@ class RailsPageTest < Test::Unit::TestCase
     assert_renders "some breadcrumbs", "<r:breadcrumbs />"
   end
   
-  def test_breadcrumb_should_equal_title
-    @page.title = "My Page"
-    assert_equal "My Page", @page.breadcrumb
+  def test_should_use_old_breadcrumbs_tag_if_breadcrumbs_attr_is_nil
+    @page = pages(:rails_page)
+    @page.breadcrumbs = nil
+    assert_renders "Homepage &gt; App page", "<r:breadcrumbs nolinks='true' />"
   end
   
   def test_should_build_parts_from_hash
