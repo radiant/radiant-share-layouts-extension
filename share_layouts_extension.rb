@@ -5,6 +5,13 @@ class ShareLayoutsExtension < Radiant::Extension
   version "0.3.1"
   description "Allows Radiant layouts to be used as layouts for standard Rails actions."
   url "http://wiki.radiantcms.org/Thirdparty_Extensions"
+  
+  # I'm sure this can be done more elegantly, but without it, RSpec complains about routing errors
+  if ENV["RAILS_ENV"] = "test"
+    define_routes do |map|
+      map.connect ':controller/:action/:id'
+    end
+  end
 
   def activate
     RailsPage
