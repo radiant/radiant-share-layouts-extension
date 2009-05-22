@@ -1,6 +1,7 @@
 = Share Layouts
 
 Created by: Sean Cribbs (seancribbs AT gmail DOT com), September 20, 2007
+Updated to work with 0.8 RC1 by: Johannes Fahrenkrug (http://springenwerk.com), May 22, 2009
 
 Allows Rails controllers/actions to use Radiant layouts as their "layout".  
 content_for blocks are mapped to page parts, with the exception of :title and
