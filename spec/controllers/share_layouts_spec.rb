@@ -59,7 +59,7 @@ class ShareController < ApplicationController
 end
 
 describe ShareController do
-  fixtures :layouts
+  dataset :layouts
 
   before(:each) do
     @controller = ShareController.new

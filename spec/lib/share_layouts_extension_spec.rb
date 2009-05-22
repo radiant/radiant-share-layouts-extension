@@ -8,8 +8,8 @@ describe ShareLayoutsExtension do
   end
   
   it "should add controller hooks" do
-    ActionController::Base.respond_to?(:radiant_layout).should be_true
-    ActionController::Base.new.respond_to?(:set_radiant_layout).should be_true
+    ActionController::Base.should respond_to(:radiant_layout)
+    ActionController::Base.new.should respond_to(:set_radiant_layout)
   end
   
   it "should add helper" do
