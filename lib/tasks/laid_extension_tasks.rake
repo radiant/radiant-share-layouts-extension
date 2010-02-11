@@ -1,14 +1,14 @@
 namespace :radiant do
   namespace :extensions do
-    namespace :share_layouts do
+    namespace :laid do
       
-      desc "Runs the migration of the Share Layouts extension"
+      desc "Runs the migration of the Laid extension"
       task :migrate => :environment do
         require 'radiant/extension_migrator'
         if ENV["VERSION"]
-          ShareLayoutsExtension.migrator.migrate(ENV["VERSION"].to_i)
+          LaidExtension.migrator.migrate(ENV["VERSION"].to_i)
         else
-          ShareLayoutsExtension.migrator.migrate
+          LaidExtension.migrator.migrate
         end
       end
     
