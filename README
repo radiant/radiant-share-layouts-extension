@@ -1,4 +1,8 @@
-= Share Layouts
+= Layouts
+
+Merges share_layouts and nested_layouts, making the whole layout adventure a lot more enjoyable
+
+(was called laid, but that was a terrible name)
 
 Created by: Sean Cribbs (seancribbs AT gmail DOT com), September 20, 2007
 Updated to work with 0.8 RC1 by: Johannes Fahrenkrug (http://springenwerk.com), May 22, 2009
