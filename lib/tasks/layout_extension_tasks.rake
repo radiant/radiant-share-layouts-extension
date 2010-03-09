@@ -11,6 +11,11 @@ namespace :radiant do
           LayoutExtension.migrator.migrate
         end
       end
+      
+      desc "nothing to do"
+      task :update => :environment do
+        puts "nothing to do"
+      end
     
     end
   end
