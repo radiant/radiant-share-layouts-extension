@@ -1,10 +1,10 @@
 # Uncomment this if you reference any of your controllers in activate
 require_dependency 'application_controller'
 
-class LayoutExtension < Radiant::Extension
+class LayoutsExtension < Radiant::Extension
   version "0.3.1"
   description "Allows Radiant layouts to be used as layouts for standard Rails actions. Includes http://github.com/moklett/radiant-nested-layouts-extension"
-  url "http://github.com/squaretalent/radiant-layout-extension"
+  url "http://github.com/squaretalent/radiant-layouts-extension"
   
   # I'm sure this can be done more elegantly, but without it, RSpec complains about routing errors
   if ENV["RAILS_ENV"] == "test"
