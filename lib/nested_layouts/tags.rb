@@ -49,17 +49,17 @@ module NestedLayouts
         raise TagError.new(%{Error (nested_layouts): "inside_layout" tag must contain a "name" attribute})
       end
     end
-
+    
     desc %{
       Allows nested layouts to target this layout.  The contents of <r:inside_layout> tag blocks in another
       layout will have their contents inserted at the location given by this tag (if they target this
       layout).  This tag also behaves like a standard <r:content/> tag if this layout is specified directly
       by a page.
-    
+      
       This tag is intended to be used inside layouts.
-    
+      
       *Usage:*
-
+      
       <html>
         <body>
           <r:content_for_layout/>
@@ -73,12 +73,12 @@ module NestedLayouts
       # return the saved content if any, or mimic a default +<r:content/>+ tag (render the body part)
       tag.globals.nested_layouts_content_stack.pop || tag.globals.page.render_snippet(tag.locals.page.part('body'))
     end
-  
+    
     desc %{
       Return the layout name of the current page.
-    
+      
       *Usage:*
-    
+      
       <html>
         <body id="<r:layout/>"
           My body tag has an id corresponding to the layout I use.  Sweet!
@@ -94,6 +94,34 @@ module NestedLayouts
         else
           ''
         end
+      end
+    end
+    
+    desc %{ output the contents of tag if layout equals name }
+    tag 'if_layout' do |tag|
+      if name = tag.attr['name']
+        if layout = tag.globals.page_original_layout
+          tag.expand if layout.name == name
+        elsif layout = tag.globals.page.layout
+          tag.expand if layout.name == name
+        end
+      else
+        raise TagError.new(%{Error (nested_layouts): "if_layout" tag must contain a "name" attribute})
+      end
+    end
+    
+    desc %{ output the contents of tag unless layout equals name }
+    tag 'unless_layout' do |tag|
+      if name = tag.attr['name']
+        if layout = tag.globals.page_original_layout
+          tag.expand if layout.name != name
+        elsif layout = tag.globals.page.layout
+          tag.expand if layout.name != name
+        else
+          tag.expand
+        end
+      else
+        raise TagError.new(%{Error (nested_layouts): "if_layout" tag must contain a "name" attribute})
       end
     end
   end
