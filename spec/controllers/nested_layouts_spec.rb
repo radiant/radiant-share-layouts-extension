@@ -5,7 +5,7 @@ class ControllerWithRadiantLayout < ApplicationController
 end
 
 class ControllerWithRadiantLayoutBlock < ApplicationController
-  radiant_layout {|c| c.action_name == "index" ? "main" : "utf8" }
+  radiant_layout {|c| c.action_name == "index" ? "main" : "utf8"}
 end
   
 describe ControllerWithRadiantLayout do  

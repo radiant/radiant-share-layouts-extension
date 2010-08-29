@@ -11,13 +11,22 @@ content_for blocks are mapped to page parts, with the exception of :title and
 :breadcrumbs, which map to their specific default tags. The default content, 
 or @content_for_layout, is mapped to the 'body' part.
 
-== What to do in your controllers
+#### Inside a controller Controller
 
-  radiant_layout 'Layout name'
+    SomeController < SiteController
+      radiant_layout 'Layout name'
 
--or-
+    # or
 
-  radiant_layout { |controller| # some code to determine layout name }
+      radiant_layout { |controller| c.action_name == "index" ? "main" : "alt" }
+    
+    # and
+    
+      def delete
+        @radiant_layout = 'delete'
+      end
+      
+    end
 
 radiant_layout takes the same options as the built-in layout.  To specifically
 override the Radiant layout and use a standard Rails one use 
