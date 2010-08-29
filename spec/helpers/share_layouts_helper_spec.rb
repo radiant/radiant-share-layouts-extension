@@ -1,8 +1,8 @@
-require File.dirname(__FILE__) + "/../spec_helper"
+require 'spec/spec_helper'
 
 describe ShareLayouts::Helper do
   include ShareLayouts::Helper
-  dataset :layouts, :pages, :share_layouts_pages
+  dataset :layouts, :pages, :share_layouts
   test_helper :page
   attr_accessor :request, :response
   

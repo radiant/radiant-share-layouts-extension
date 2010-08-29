@@ -1,4 +1,5 @@
 class RailsPage < Page
+
   display_name "Application"
   attr_accessor :breadcrumbs
 
@@ -34,4 +35,5 @@ class RailsPage < Page
       render_tag('old_breadcrumbs', tag)
     end
   end
+  
 end

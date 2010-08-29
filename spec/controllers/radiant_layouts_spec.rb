@@ -1,5 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
-
+require 'spec/spec_helper'
 
 class ControllerWithRadiantLayout < ApplicationController
   radiant_layout 'main'
@@ -24,6 +23,7 @@ describe ControllerWithRadiantLayout do
   end
   
   it "should return 'radiant' when read_inheritable_attribute('layout') is called"
+  
 end
   
 describe ControllerWithRadiantLayoutBlock do  
@@ -40,5 +40,6 @@ describe ControllerWithRadiantLayoutBlock do
   end
   
   it "should return 'radiant' when read_inheritable_attribute('layout') is called"
+  
 end
 

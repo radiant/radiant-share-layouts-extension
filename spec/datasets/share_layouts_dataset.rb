@@ -1,4 +1,4 @@
-class ShareLayoutsPagesDataset < Dataset::Base
+class ShareLayoutsDataset < Dataset::Base
   def load
     create_record :page, :homepage, :id => 1, 
       :title => 'Homepage',
@@ -6,7 +6,7 @@ class ShareLayoutsPagesDataset < Dataset::Base
       :slug => '/',
       :status_id => 100,
       :published_at => '2008-01-01 08:00:00'
-      
+
     create_record :page, :rails_page,
       :id => 2,
       :title => 'App page',
@@ -16,7 +16,7 @@ class ShareLayoutsPagesDataset < Dataset::Base
       :status_id => 100,
       :parent_id => 1,
       :published_at => '2008-01-01 08:00:00'
-    
+
     create_record :page, :rails_page_child,
       :id => 3,
       :title => 'Child',
@@ -25,7 +25,7 @@ class ShareLayoutsPagesDataset < Dataset::Base
       :status_id => 100,
       :parent_id => 2,
       :published_at => '2008-01-01 08:00:00'
-    
+
     create_record :page, :other,
       :id => 4,
       :title => 'Other',

@@ -17,7 +17,6 @@ module NestedLayouts
           <r:content_for_layout/>
         </div>
       </r:inside_layout>
-    
     }
     tag 'inside_layout' do |tag|
       if name = tag.attr['name']

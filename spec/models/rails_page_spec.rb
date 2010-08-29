@@ -1,9 +1,9 @@
-require File.dirname(__FILE__) + "/../spec_helper"
+require 'spec/spec_helper'
 require 'ostruct'
 
 describe RailsPage do 
   test_helper :render, :page
-  dataset :share_layouts_pages, :pages
+  dataset :share_layouts, :pages
   
   before(:each) do
     @page = RailsPage.new(page_params(:class_name => "RailsPage"))

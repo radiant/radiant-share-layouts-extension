@@ -1,4 +1,5 @@
 module ShareLayouts::RadiantLayouts
+  
   def self.included(base)
     base.extend ClassMethods
   end
@@ -16,4 +17,5 @@ module ShareLayouts::RadiantLayouts
     @radiant_layout = self.class.read_inheritable_attribute 'radiant_layout'
     @radiant_layout = @radiant_layout.call(self) if @radiant_layout.is_a? Proc
   end
+  
 end
