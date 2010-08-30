@@ -21,6 +21,28 @@ require 'rake'
 require 'rake/rdoctask'
 require 'rake/testtask'
 
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "radiant-layouts-extension"
+    gem.summary = %Q{TODO: Provides extensions to standard layouts, including nesting and sharing}
+    gem.description = %Q{TODO: Provides extensions to standard layouts, including nesting of layouts within each other and sharing radiant layouts with rails controllers}
+    gem.email = "dk@squaretalent.com"
+    gem.homepage = "http://github.com/squaretalent/radiant-layouts-extension"
+    gem.authors = ["Dirk Kelly"]
+    gem.add_development_dependency 'rspec',           '>= 1.3.0'
+    gem.add_development_dependency 'rspec-rails',     '>= 1.3.2'
+    gem.add_development_dependency 'cucumber',        '>= 0.8.5'
+    gem.add_development_dependency 'cucumber-rails',  '>= 0.3.2'
+    gem.add_development_dependency 'database_cleaner','>= 0.4.3'
+    gem.add_development_dependency 'ruby-debug',      '>= 0.10.3'
+    gem.add_development_dependency 'webrat',          '>= 0.10.3'
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+end
+
 rspec_base = File.expand_path(RADIANT_ROOT + '/vendor/plugins/rspec/lib')
 $LOAD_PATH.unshift(rspec_base) if File.exist?(rspec_base)
 require 'spec/rake/spectask'
@@ -97,23 +119,6 @@ namespace :spec do
       end
     end
   end
-end
-
-desc 'Generate documentation for the <%= file_name %> extension.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = '<%= class_name %>'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
-
-# For extensions that are in transition
-desc 'Test the <%= file_name %> extension.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
 end
 
 # Load any custom rakefiles for extension

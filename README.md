@@ -37,7 +37,7 @@ variable to the name of a Radiant layout in your controller or view.
 
 ### Acknowledgments
 
-* Merged into 
+* Merged into radiant-layouts-extension, Dirk Kelly, August 2010
 * Updated to work with 0.8 RC1 by: Johannes Fahrenkrug (http://springenwerk.com), May 22, 2009
 * Created by: Sean Cribbs (seancribbs AT gmail DOT com), September 20, 2007
 
@@ -49,8 +49,9 @@ variable to the name of a Radiant layout in your controller or view.
 
 ### Introduction
 
-Provides the ability to include a layout outside of the current one. Meaning you can define things
-like a doctype without having to repeat yourself.
+Nested Layouts enables reuse of a top-level "master" layout (one that contains your <html> tags and the overall
+structure/wrapper of your site) for several different "nested" layouts (i.e. a one-column layout and a
+two-column layout).  Keep your layouts DRY!
 
 A simple example is of the following wrapper and page layout
 
@@ -76,4 +77,5 @@ This would render the following if Page Layout was called
     
 ### Acknowledgments
 
-_coming soon, sorry_
+* Merged into radiant-layouts-extension, Dirk Kelly, August 2010
+* Original Source: http://github.com/moklett/radiant-nested-layouts-extension
