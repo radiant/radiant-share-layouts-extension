@@ -25,8 +25,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "radiant-layouts-extension"
-    gem.summary = %Q{TODO: Provides extensions to standard layouts, including nesting and sharing}
-    gem.description = %Q{TODO: Provides extensions to standard layouts, including nesting of layouts within each other and sharing radiant layouts with rails controllers}
+    gem.summary = %Q{Provides extensions to standard layouts, including nesting and sharing}
+    gem.description = %Q{Provides extensions to standard layouts, including nesting of layouts within each other and sharing radiant layouts with rails controllers}
     gem.email = "dk@squaretalent.com"
     gem.homepage = "http://github.com/squaretalent/radiant-layouts-extension"
     gem.authors = ["Dirk Kelly"]

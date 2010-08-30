@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
      "lib/share_layouts/helper.rb",
      "lib/share_layouts/radiant_layouts.rb",
      "lib/tasks/layouts_extension_tasks.rake",
+     "radiant-layouts-extension.gemspec",
      "spec/controllers/nested_layouts_spec.rb",
      "spec/controllers/share_layouts_spec.rb",
      "spec/datasets/nested_layouts_dataset.rb",
