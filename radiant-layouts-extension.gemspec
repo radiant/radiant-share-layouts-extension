@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dirk Kelly"]
   s.date = %q{2010-08-30}
-  s.description = %q{TODO: Provides extensions to standard layouts, including nesting of layouts within each other and sharing radiant layouts with rails controllers}
+  s.description = %q{Provides extensions to standard layouts, including nesting of layouts within each other and sharing radiant layouts with rails controllers}
   s.email = %q{dk@squaretalent.com}
   s.extra_rdoc_files = [
     "README.md"
@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{TODO: Provides extensions to standard layouts, including nesting and sharing}
+  s.summary = %q{Provides extensions to standard layouts, including nesting and sharing}
   s.test_files = [
     "spec/controllers/nested_layouts_spec.rb",
      "spec/controllers/share_layouts_spec.rb",
