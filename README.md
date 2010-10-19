@@ -82,6 +82,8 @@ This would render the following if Page Layout was called
 
 ## Haml Layouts
 
+[http://haml-lang.com/](http://haml-lang.com/)
+
 ### Introduction
 
 Write your layouts and radius tags in haml, with support for nested layouts
