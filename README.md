@@ -107,4 +107,4 @@ radius tags are passed.
 
 * [http://twitter.com/saturnflyer](@SaturnFlyer) (Jim Gay)  | Original idea http://github.com/saturnflyer/radiant-haml_filter-extension
 * [http://twitter.com/tissak](@Tissak) (Tony Issakov)  | Insisted that this was possible, and then wrote up an implementation in 10 minutes
-* [[http://twitter.com/dirkkelly](@DirkKelly) (Dirk Kelly) | Merged into radiant-layouts-extension
+* [http://twitter.com/dirkkelly](@DirkKelly) (Dirk Kelly) | Merged into radiant-layouts-extension
