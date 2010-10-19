@@ -99,12 +99,12 @@ Write your layouts and radius tags in haml, with support for nested layouts
         
 Note: Within Layouts you must set the content type to `haml` or the Layout name to end in `.haml`
         
-Integrates the work of @saturnflyer creating a haml_filter on pages and snippets. Additional task involved
+Integrates the work of [http://github.com/saturnflyer](SaturnFlyer) creating a haml_filter on pages and snippets. Additional task involved
 changing the order which objects with this type are renders. The content is turned into html before the 
 radius tags are passed.
 
 ### Acknowledgments
 
-* [http://twitter.com/saturnflyer](@SaturnFlyer) (Jim Gay)  | Original idea http://github.com/saturnflyer/radiant-haml_filter-extension
-* [http://twitter.com/tissak](@Tissak) (Tony Issakov)  | Insisted that this was possible, and then wrote up an implementation in 10 minutes
-* [http://twitter.com/dirkkelly](@DirkKelly) (Dirk Kelly) | Merged into radiant-layouts-extension
+* [http://github.com/saturnflyer](SaturnFlyer) [http://twitter.com/saturnflyer](@SaturnFlyer) (Jim Gay)  | Original idea http://github.com/saturnflyer/radiant-haml_filter-extension
+* [http://github.com/tissak](Tissak) [http://twitter.com/tissak](@Tissak) (Tony Issakov)  | Insisted that this was possible, and then wrote up an implementation in 10 minutes
+* [http://github.com/dirkkelly](DirkKelly) [http://twitter.com/dirkkelly](@DirkKelly) (Dirk Kelly) | Merged into radiant-layouts-extension and hooked page parse_object to support snippets and content haml radius tags
