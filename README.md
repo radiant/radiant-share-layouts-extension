@@ -97,12 +97,14 @@ Write your layouts and radius tags in haml, with support for nested layouts
       %h2
         %:title
         
+Note: Within Layouts you must set the content type to `haml` or the Layout name to end in `.haml`
+        
 Integrates the work of @saturnflyer creating a haml_filter on pages and snippets. Additional task involved
 changing the order which objects with this type are renders. The content is turned into html before the 
 radius tags are passed.
 
 ### Acknowledgments
 
-* @SaturnFlyer (Jim Gay)  | Original idea http://github.com/saturnflyer/radiant-haml_filter-extension
-* @Tissak (Tony Issakov)  | Insisted that this was possible, and then wrote up an implementation in 10 minutes
-* @DirkKelly (Dirk Kelly) | Merged into radiant-layouts-extension
+* [http://twitter.com/saturnflyer](@SaturnFlyer) (Jim Gay)  | Original idea http://github.com/saturnflyer/radiant-haml_filter-extension
+* [http://twitter.com/tissak](@Tissak) (Tony Issakov)  | Insisted that this was possible, and then wrote up an implementation in 10 minutes
+* [[http://twitter.com/dirkkelly](@DirkKelly) (Dirk Kelly) | Merged into radiant-layouts-extension
