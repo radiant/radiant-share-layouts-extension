@@ -79,3 +79,28 @@ This would render the following if Page Layout was called
 
 * Merged into radiant-layouts-extension, Dirk Kelly, August 2010
 * Original Source: http://github.com/moklett/radiant-nested-layouts-extension
+
+## Haml Layouts
+
+### Introduction
+
+Write your layouts and radius tags in haml, with support for nested layouts
+
+    // Parent Layout
+    %div{:id=>"parent"}
+      %r:content_for_layout
+      
+    // Child Layout
+    %r:inside_layout{:name=>"Parent"}
+      %h2
+        %:title
+        
+Integrates the work of @saturnflyer creating a haml_filter on pages and snippets. Additional task involved
+changing the order which objects with this type are renders. The content is turned into html before the 
+radius tags are passed.
+
+### Acknowledgments
+
+* @SaturnFlyer (Jim Gay)  | Original idea http://github.com/saturnflyer/radiant-haml_filter-extension
+* @Tissak (Tony Issakov)  | Insisted that this was possible, and then wrote up an implementation in 10 minutes
+* @DirkKelly (Dirk Kelly) | Merged into radiant-layouts-extension
