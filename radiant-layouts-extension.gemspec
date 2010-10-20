@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-layouts-extension}
-  s.version = "0.9.1"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Dirk Kelly"]
-  s.date = %q{2010-08-30}
-  s.description = %q{Provides extensions to standard layouts, including nesting of layouts within each other and sharing radiant layouts with rails controllers}
-  s.email = %q{dk@squaretalent.com}
+  s.authors = ["Michael Klett", "Jim Gay", "William Ross", "Tony Issakov", "Dirk Kelly"]
+  s.date = %q{2010-10-20}
+  s.description = %q{Extends Radiant Layouts to support nesting, sharing with Rails Controllers and rendering HAML}
+  s.email = %q{dk@dirkkelly.com}
   s.extra_rdoc_files = [
     "README.md"
   ]
@@ -21,25 +21,31 @@ Gem::Specification.new do |s|
      "README.md",
      "Rakefile",
      "VERSION",
+     "app/models/haml_filter.rb",
      "app/models/rails_page.rb",
      "app/views/layouts/radiant.html.haml",
+     "config/routes.rb",
      "layouts_extension.rb",
-     "lib/nested_layouts.rb",
-     "lib/nested_layouts/tags.rb",
-     "lib/share_layouts.rb",
-     "lib/share_layouts/helper.rb",
-     "lib/share_layouts/radiant_layouts.rb",
+     "lib/haml_layouts/models/layout.rb",
+     "lib/haml_layouts/models/page.rb",
+     "lib/nested_layouts/tags/core.rb",
+     "lib/share_layouts/controllers/action_controller.rb",
+     "lib/share_layouts/helpers/action_view.rb",
      "lib/tasks/layouts_extension_tasks.rake",
      "radiant-layouts-extension.gemspec",
-     "spec/controllers/nested_layouts_spec.rb",
-     "spec/controllers/share_layouts_spec.rb",
-     "spec/datasets/nested_layouts_dataset.rb",
-     "spec/datasets/share_layouts_dataset.rb",
-     "spec/helpers/share_layouts_helper_spec.rb",
-     "spec/lib/nested_layouts/tags_spec.rb",
-     "spec/lib/share_layouts_extension_spec.rb",
+     "spec/controllers/share_controller_spec.rb",
+     "spec/datasets/layouts_layouts.rb",
+     "spec/datasets/layouts_pages.rb",
+     "spec/lib/haml_layouts/haml_layouts_extension_spec.rb",
+     "spec/lib/haml_layouts/models/layout_spec.rb",
+     "spec/lib/haml_layouts/models/page_spec.rb",
+     "spec/lib/nested_layouts/nested_layouts_extension_spec.rb",
+     "spec/lib/nested_layouts/tags/core_spec.rb",
+     "spec/lib/share_layouts/controllers/action_controller_spec.rb",
+     "spec/lib/share_layouts/helpers/action_view_spec.rb",
+     "spec/lib/share_layouts/share_layouts_extension_spec.rb",
+     "spec/models/haml_filter_spec.rb",
      "spec/models/rails_page_spec.rb",
-     "spec/rcov.opts",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -47,15 +53,20 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Provides extensions to standard layouts, including nesting and sharing}
+  s.summary = %q{Extends Radiant Layouts to support nesting, sharing with Rails Controllers and rendering HAML}
   s.test_files = [
-    "spec/controllers/nested_layouts_spec.rb",
-     "spec/controllers/share_layouts_spec.rb",
-     "spec/datasets/nested_layouts_dataset.rb",
-     "spec/datasets/share_layouts_dataset.rb",
-     "spec/helpers/share_layouts_helper_spec.rb",
-     "spec/lib/nested_layouts/tags_spec.rb",
-     "spec/lib/share_layouts_extension_spec.rb",
+    "spec/controllers/share_controller_spec.rb",
+     "spec/datasets/layouts_layouts.rb",
+     "spec/datasets/layouts_pages.rb",
+     "spec/lib/haml_layouts/haml_layouts_extension_spec.rb",
+     "spec/lib/haml_layouts/models/layout_spec.rb",
+     "spec/lib/haml_layouts/models/page_spec.rb",
+     "spec/lib/nested_layouts/nested_layouts_extension_spec.rb",
+     "spec/lib/nested_layouts/tags/core_spec.rb",
+     "spec/lib/share_layouts/controllers/action_controller_spec.rb",
+     "spec/lib/share_layouts/helpers/action_view_spec.rb",
+     "spec/lib/share_layouts/share_layouts_extension_spec.rb",
+     "spec/models/haml_filter_spec.rb",
      "spec/models/rails_page_spec.rb",
      "spec/spec_helper.rb"
   ]

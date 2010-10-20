@@ -103,6 +103,24 @@ Integrates the work of [SaturnFlyer](http://github.com/saturnflyer) creating a h
 changing the order which objects with this type are renders. The content is turned into html before the 
 radius tags are passed.
 
+### Caveats 
+
+You can't yet put a radiant tag inside an attribute of a haml element. ie:
+
+    %div.product{:id=>"<r:id />"} // Will not work
+    
+    %div.product{:id=>"%r:id"} // Will not work
+    
+    %div.product{:id=><r:id />} // Will not work
+
+In the mean time use a plain filter whilst we come up with something awesome
+
+    %body
+      #primary
+        :plain
+          <div id="<r:id />" class="product">
+            <r:snippet name='product' />
+
 ### Acknowledgments
 
 * [SaturnFlyer](http://github.com/saturnflyer) [@SaturnFlyer](http://twitter.com/saturnflyer) (Jim Gay)  | Original idea http://github.com/saturnflyer/radiant-haml_filter-extension
