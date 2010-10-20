@@ -1,12 +1,83 @@
-http://github.com/moklett/radiant-nested-layouts-extension/
+# Layouts Extension
 
-The following licence applies to the files:
-lib/nested_layouts.rb
-lib/nested_layouts/tags.rb
+Is a collaboration of many parties that solves some common shortcomings with standard Radiant layouts
 
+http://github.com/squaretalent/radiant-layouts-extension/
+
+## Nested Layouts
+
+    lib/nested_layouts/core.rb
+    
+    spec/lib/nested_layouts/nested_layouts_extension_spec.rb
+    spec/lib/nested_layouts/tags/core_spec.rb
+    
 == MIT License
 
 Copyright (c) 2008 Michael O. Klett.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Shared Layouts
+
+    lib/share_layouts/controllers/action_controller.rb
+    lib/share_layouts/helpers/action_view.rb
+    app/models/rails_page/action_view.rb
+    
+    spec/controllers/share_controller_spec.rb
+    spec/lib/share_layouts/share_layouts_extension_spec.rb
+    spec/lib/share_layouts/controllers/action_controller_spec.rb
+    spec/lib/share_layouts/helpers/action_view_spec.rb
+
+== MIT Licence
+
+Copyright (c) 2010 Radiant
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## HAML Layouts
+
+    lib/haml_layouts/models/layout.rb
+    lib/haml_layouts/models/page.rb
+    
+    spec/lib/haml_layouts/haml_layouts_extension_spec.rb
+    spec/lib/haml_layouts/models/layout_spec.rb
+    spec/lib/haml_layouts/models/layout_spec.rb
+
+== MIT Licence
+
+Copyright (c) 2010 The Frontier Group Pty. Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
