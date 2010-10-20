@@ -25,11 +25,11 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "radiant-layouts-extension"
-    gem.summary = %Q{Provides extensions to standard layouts, including nesting and sharing}
-    gem.description = %Q{Provides extensions to standard layouts, including nesting of layouts within each other and sharing radiant layouts with rails controllers}
-    gem.email = "dk@squaretalent.com"
+    gem.summary = %Q{Extends Radiant Layouts to support nesting, sharing with Rails Controllers and rendering HAML}
+    gem.description = %Q{Extends Radiant Layouts to support nesting, sharing with Rails Controllers and rendering HAML}
+    gem.email = "dk@dirkkelly.com"
     gem.homepage = "http://github.com/squaretalent/radiant-layouts-extension"
-    gem.authors = ["Dirk Kelly"]
+    gem.authors = ["Michael Klett", "Jim Gay", "William Ross", "Tony Issakov", "Dirk Kelly"]
     gem.add_development_dependency 'rspec',           '>= 1.3.0'
     gem.add_development_dependency 'rspec-rails',     '>= 1.3.2'
     gem.add_development_dependency 'cucumber',        '>= 0.8.5'
@@ -40,13 +40,35 @@ begin
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+  puts "Jeweler (or a dependency) not available. This is only required if you plan to package layouts as a gem."
 end
+
+# In rails 1.2, plugins aren't available in the path until they're loaded.
+# Check to see if the rspec plugin is installed first and require
+# it if it is.  If not, use the gem version.
+
+# Determine where the RSpec plugin is by loading the boot
+unless defined? RADIANT_ROOT
+  ENV["RAILS_ENV"] = "test"
+  case
+  when ENV["RADIANT_ENV_FILE"]
+    require File.dirname(ENV["RADIANT_ENV_FILE"]) + "/boot"
+  when File.dirname(__FILE__) =~ %r{vendor/radiant/vendor/extensions}
+    require "#{File.expand_path(File.dirname(__FILE__) + "/../../../../../")}/config/boot"
+  else
+    require "#{File.expand_path(File.dirname(__FILE__) + "/../../../")}/config/boot"
+  end
+end
+
+require 'rake'
+require 'rake/rdoctask'
+require 'rake/testtask'
 
 rspec_base = File.expand_path(RADIANT_ROOT + '/vendor/plugins/rspec/lib')
 $LOAD_PATH.unshift(rspec_base) if File.exist?(rspec_base)
 require 'spec/rake/spectask'
-# require 'spec/translator'
+require 'cucumber'
+require 'cucumber/rake/task'
 
 # Cleanup the RADIANT_ROOT constant so specs will load the environment
 Object.send(:remove_const, :RADIANT_ROOT)
@@ -62,6 +84,8 @@ Spec::Rake::SpecTask.new(:spec) do |t|
   t.spec_files = FileList['spec/**/*_spec.rb']
 end
 
+task :features => 'spec:integration'
+
 namespace :spec do
   desc "Run all specs in spec directory with RCov"
   Spec::Rake::SpecTask.new(:rcov) do |t|
@@ -70,7 +94,7 @@ namespace :spec do
     t.rcov = true
     t.rcov_opts = ['--exclude', 'spec', '--rails']
   end
-  
+
   desc "Print Specdoc for all specs"
   Spec::Rake::SpecTask.new(:doc) do |t|
     t.spec_opts = ["--format", "specdoc", "--dry-run"]
@@ -84,14 +108,14 @@ namespace :spec do
       t.spec_files = FileList["spec/#{sub}/**/*_spec.rb"]
     end
   end
-  
-  # Hopefully no one has written their extensions in pre-0.9 style
-  # desc "Translate specs from pre-0.9 to 0.9 style"
-  # task :translate do
-  #   translator = ::Spec::Translator.new
-  #   dir = RAILS_ROOT + '/spec'
-  #   translator.translate(dir, dir)
-  # end
+
+  desc "Run the Cucumber features"
+  Cucumber::Rake::Task.new(:integration) do |t|
+    t.fork = true
+    t.cucumber_opts = ['--format', (ENV['CUCUMBER_FORMAT'] || 'pretty')]
+    # t.feature_pattern = "#{extension_root}/features/**/*.feature"
+    t.profile = "default"
+  end
 
   # Setup specs for stats
   task :statsetup do
@@ -119,6 +143,23 @@ namespace :spec do
       end
     end
   end
+end
+
+desc 'Generate documentation for the layouts extension.'
+Rake::RDocTask.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'LayoutsExtension'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+# For extensions that are in transition
+desc 'Test the Layout extension.'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = true
 end
 
 # Load any custom rakefiles for extension
