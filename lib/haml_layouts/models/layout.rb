@@ -20,6 +20,7 @@ module HamlLayouts
             if File.extname(name) == '.haml'
               result = true
             elsif content_type == 'haml'
+              warn 'DEPRECATED: Set HAML layout filename to end in `.haml`. Content/Type support to be removed in 1.1.0'
               result = true
             end
             

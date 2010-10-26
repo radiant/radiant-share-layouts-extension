@@ -97,7 +97,7 @@ Write your layouts and radius tags in haml, with support for nested layouts
       %h2
         %:title
         
-Note: Within Layouts you must set the content type to `haml` or the Layout name to end in `.haml`
+Note: Within Layouts you must set the name to end in `.haml`
         
 Integrates the work of [SaturnFlyer](http://github.com/saturnflyer) creating a haml_filter on pages and snippets. Additional task involved
 changing the order which objects with this type are renders. The content is turned into html before the 

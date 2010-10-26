@@ -2,7 +2,7 @@
 require_dependency 'application_controller'
 
 class LayoutsExtension < Radiant::Extension
-  version "0.4.0"
+  version "1.0.1"
   description "A set of useful extensions to standard Layouts."
   url "http://github.com/squaretalent/radiant-layouts-extension"
   
