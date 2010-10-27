@@ -119,7 +119,7 @@ module NestedLayouts
       end
       
       tag 'body' do  |tag|
-        %{<body class="#{tag.attr['class']} #{current_layout_name(tag)}">#{tag.expand}</body>}
+        %{<body id="#{tag.locals.page.slug}" class="#{current_layout_name(tag)}#{tag.attr['class'].present? ? " #{tag.attr['class']}" : nil}">#{tag.expand}</body>}
       end
       
       protected
