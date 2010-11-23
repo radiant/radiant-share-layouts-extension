@@ -30,6 +30,7 @@ begin
     gem.email = "dk@dirkkelly.com"
     gem.homepage = "http://github.com/squaretalent/radiant-layouts-extension"
     gem.authors = ["Michael Klett", "Jim Gay", "William Ross", "Tony Issakov", "Dirk Kelly"]
+    gem.add_dependency 'radiant',                     '>= 0.9.1'
     gem.add_development_dependency 'rspec',           '>= 1.3.0'
     gem.add_development_dependency 'rspec-rails',     '>= 1.3.2'
     gem.add_development_dependency 'cucumber',        '>= 0.8.5'
