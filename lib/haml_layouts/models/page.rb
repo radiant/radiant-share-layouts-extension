@@ -6,9 +6,11 @@ module HamlLayouts
         base.class_eval do
           
           def parse_object(object)
-            text = object.content
+            # We don't want to return the haml on a layout by default
+            text =  object.is_a?(Layout) ? object.rendered_content : object.content
+                        
             if object.respond_to? :filter_id
-              if object.filter_id === 'Haml'
+              if object.filter_id == 'Haml'
                 # We want to render the tags as html/radius before passing them
                 text = object.filter.filter(text)
                 text = parse(text)
