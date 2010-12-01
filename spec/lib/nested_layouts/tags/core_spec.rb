@@ -14,7 +14,7 @@ describe NestedLayouts::Tags::Core do
   <head>
     <title>Title</title>
   </head>
-  <body class="site parent">
+  <body id="" class="parent site">
     <h1>Hi</h1>
   </body>
 </html>
@@ -30,7 +30,7 @@ CONTENT
   <head>
     <title>Title</title>
   </head>
-  <body class="site child">
+  <body id="child" class="child site">
     <h1>Hi</h1>
   </body>
 </html>
@@ -50,7 +50,7 @@ CONTENT
   <head>
     <title>Title</title>
   </head>
-  <body class="site parent">
+  <body id="" class="parent site">
     <h1>Hi</h1>
   </body>
 </html>
@@ -66,7 +66,7 @@ CONTENT
   <head>
     <title>Title</title>
   </head>
-  <body class="site parent">
+  <body id="" class="parent site">
     
   </body>
 </html>
@@ -86,7 +86,7 @@ CONTENT
   <head>
     <title>Title</title>
   </head>
-  <body class="site parent">
+  <body id="" class="parent site">
     
   </body>
 </html>
@@ -102,7 +102,7 @@ CONTENT
   <head>
     <title>Title</title>
   </head>
-  <body class="site parent">
+  <body id="" class="parent site">
     <h1>Hi</h1>
   </body>
 </html>

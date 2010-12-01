@@ -13,7 +13,7 @@ describe ShareLayouts::Helpers::ActionView do
   <head>
     <title>Title</title>
   </head>
-  <body class="site parent">
+  <body id="page" class="parent site">
     something
   </body>
 </html>
