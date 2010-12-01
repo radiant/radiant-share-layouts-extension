@@ -86,40 +86,27 @@ This would render the following if Page Layout was called
 
 ### Introduction
 
-Write your layouts and radius tags in haml, with support for nested layouts
+Write your layouts and radius tags in haml, with support for nested layouts and radius attributes
 
-    // Parent Layout
-    %div{:id=>"parent"}
+    // Parent Layout - with content/type set as 'haml'
+    %div{:id=>"parent",:title=>"<r:title />"}
       %r:content_for_layout
       
-    // Child Layout
+    // Child Layout - with content/type set as 'haml'
     %r:inside_layout{:name=>"Parent"}
       %h2
         %:title
+
+    <div id="parent" title="some title">
+      <h2>
+        some title
+      </h2>
+    </div>
         
-Note: Within Layouts you must set the name to end in `.haml`
-        
-Integrates the work of [SaturnFlyer](http://github.com/saturnflyer) creating a haml_filter on pages and snippets. Additional task involved
+Integrates the work of [SaturnFlyer](http://github.com/saturnflyer) creating a haml_filter on pages and snippets. Additional task involved.
+
 changing the order which objects with this type are renders. The content is turned into html before the 
 radius tags are passed.
-
-### Caveats 
-
-You can't yet put a radiant tag inside an attribute of a haml element. ie:
-
-    %div.product{:id=>"<r:id />"} // Will not work
-    
-    %div.product{:id=>"%r:id"} // Will not work
-    
-    %div.product{:id=><r:id />} // Will not work
-
-In the mean time use a plain filter whilst we come up with something awesome
-
-    %body
-      #primary
-        :plain
-          <div id="<r:id />" class="product">
-            <r:snippet name='product' />
 
 ### Acknowledgments
 
