@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-layouts-extension}
-  s.version = "1.1.1"
+  s.version = "1.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Klett", "Jim Gay", "William Ross", "Tony Issakov", "Dirk Kelly"]
-  s.date = %q{2010-12-01}
+  s.date = %q{2010-12-02}
   s.description = %q{Extends Radiant Layouts to support nesting, sharing with Rails Controllers and rendering HAML}
   s.email = %q{dk@dirkkelly.com}
   s.extra_rdoc_files = [
