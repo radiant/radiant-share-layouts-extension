@@ -19,7 +19,7 @@ CONTENT
       :name       => 'child',
       :content    => <<-CONTENT
 <r:inside_layout name='parent'>
-  <h1><r:layout /></h1>
+  <h1><r:layout/></h1>
 </r:inside_layout>
 CONTENT
 
@@ -28,7 +28,7 @@ CONTENT
       :content_type => 'haml',
       :content      => <<-CONTENT
 %r:inside_layout{:name=>"parent"}
-  %h1
+  %h1{:id=>"<r:layout />",:'data-layout'=>"<r:find url='find'><r:layout/></r:find>"}
     %r:layout
 CONTENT
   end

@@ -9,12 +9,12 @@ describe HamlLayouts::Models::Layout do
       it 'should return html rendered' do
         expected = <<-CONTENT
 <r:inside_layout name='parent'>
-  <h1>
+  <h1 data-layout="<r:find url='find'><r:layout/></r:find>" id='<r:layout/>'>
     <r:layout></r:layout>
   </h1>
 </r:inside_layout>
 CONTENT
-        layouts(:haml).content.should === expected
+        layouts(:haml).rendered_content.should === expected
       end
     end
   end

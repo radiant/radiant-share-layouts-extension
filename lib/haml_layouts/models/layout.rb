@@ -8,7 +8,8 @@ module HamlLayouts
           # Will render html from haml if necessary
           def rendered_content
             if is_haml?
-              Haml::Engine.new(content).render 
+              # The gsub will replace all escaped radius tags with html
+              Haml::Engine.new(content).render.gsub(/&lt;(\/)?r:(.+?)\s*(\/|\\)*&gt;/m,"<\\1r:\\2\\3>")
             else
               content
             end
