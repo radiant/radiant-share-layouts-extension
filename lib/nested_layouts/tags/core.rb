@@ -90,32 +90,30 @@ module NestedLayouts
         current_layout_name(tag)
       end
     
-      desc %{ output the contents of tag if layout equals name }
-      tag 'if_layout' do |tag|
-        if name = tag.attr['name']
-          if layout = tag.globals.page_original_layout
-            tag.expand if layout.name == name
-          elsif layout = tag.globals.page.layout
-            tag.expand if layout.name == name
-          end
-        else
-          raise TagError.new(%{Error (nested_layouts): "if_layout" tag must contain a "name" attribute})
-        end
+      desc %{
+        output the contents of tag if layout equals name (support regex)
+        
+        *Usage:*
+      
+        <pre><code><r:if_layout name="(parent|parent_of_child)">
+          one of those layouts
+        </r:if_layout></code></pre>
+      }
+      tag 'if_layout' do |tag|        
+        tag.expand if is_current_layout(tag)
       end
     
-      desc %{ output the contents of tag unless layout equals name }
+      desc %{
+        Output the contents of tag unless layout equals name (support regex)
+        
+        *Usage:*
+      
+        <pre><code><r:unless_layout name="parent">
+          not the parent layotu
+        </r:unless_layout></code></pre>
+      }
       tag 'unless_layout' do |tag|
-        if name = tag.attr['name']
-          if layout = tag.globals.page_original_layout
-            tag.expand if layout.name != name
-          elsif layout = tag.globals.page.layout
-            tag.expand if layout.name != name
-          else
-            tag.expand
-          end
-        else
-          raise TagError.new(%{Error (nested_layouts): "if_layout" tag must contain a "name" attribute})
-        end
+        tag.expand unless is_current_layout(tag)
       end
       
       tag 'body' do  |tag|
@@ -134,6 +132,17 @@ module NestedLayouts
         end
         
         result
+      end
+      
+      def is_current_layout(tag)
+        if tag.attr['name'].nil?
+          raise TagError.new(%{Error (nested_layouts): "if_layout" tag must contain a "name" attribute})
+        end
+        
+        layout = tag.globals.page_original_layout || tag.globals.page.layout
+        search = %r{#{tag.attr['name']}}
+        
+        (layout.name =~ search).present?
       end
       
     end

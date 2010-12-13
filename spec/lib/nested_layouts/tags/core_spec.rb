@@ -58,6 +58,22 @@ CONTENT
       pages(:parent).should render(tag).as(expected)
     end
     
+    it 'it should support regex' do
+      tag = %{<r:inside_layout name='parent'><r:if_layout name='(parent|child)'><h1>Hi</h1></r:if_layout></r:inside_layout>}
+      expected = <<-CONTENT
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+  </head>
+  <body id="" class="parent site">
+    <h1>Hi</h1>
+  </body>
+</html>
+CONTENT
+      pages(:parent).should render(tag).as(expected)
+    end
+    
     it 'it should not render the contents if false' do
       tag = %{<r:inside_layout name='parent'><r:if_layout name='not parent'><h1>Hi</h1></r:if_layout></r:inside_layout>}
       expected = <<-CONTENT
@@ -78,22 +94,6 @@ CONTENT
   
   describe '<r:unless_layout>' do
 
-    it 'it should not render the contents if true' do
-      tag = %{<r:inside_layout name='parent'><r:unless_layout name='parent'><h1>Hi</h1></r:unless_layout></r:inside_layout>}
-      expected = <<-CONTENT
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Title</title>
-  </head>
-  <body id="" class="parent site">
-    
-  </body>
-</html>
-CONTENT
-      pages(:parent).should render(tag).as(expected)
-    end
-
     it 'it should not render the contents if false' do
       tag = %{<r:inside_layout name='parent'><r:unless_layout name='not parent'><h1>Hi</h1></r:unless_layout></r:inside_layout>}
       expected = <<-CONTENT
@@ -104,6 +104,38 @@ CONTENT
   </head>
   <body id="" class="parent site">
     <h1>Hi</h1>
+  </body>
+</html>
+CONTENT
+      pages(:parent).should render(tag).as(expected)
+    end
+    
+    it 'it should support regex' do
+      tag = %{<r:inside_layout name='parent'><r:unless_layout name='(not_parent|not_child)'><h1>Hi</h1></r:unless_layout></r:inside_layout>}
+      expected = <<-CONTENT
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+  </head>
+  <body id="" class="parent site">
+    <h1>Hi</h1>
+  </body>
+</html>
+CONTENT
+      pages(:parent).should render(tag).as(expected)
+    end
+
+    it 'it should not render the contents if true' do
+      tag = %{<r:inside_layout name='parent'><r:unless_layout name='parent'><h1>Hi</h1></r:unless_layout></r:inside_layout>}
+      expected = <<-CONTENT
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+  </head>
+  <body id="" class="parent site">
+    
   </body>
 </html>
 CONTENT
